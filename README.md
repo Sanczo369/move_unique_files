@@ -1,2 +1,2 @@
-# move_unique_files
-Unique file transfer program
+# Program do segregacji plików
+ Program na podstawie nazwy przenosi do do folderu docelowego pliki których początek nazwy się nie powtarza
