@@ -6,6 +6,9 @@ root.title("Puki Majster")
 
 
 def move_unique_files(folder_zrodlowy, folder_deocelowy):
+    # Sprawdzenie istnienia folderu żródłowego jeśli nie istnieje program sie kończy
+    if not os.path.exists(folder_zrodlowy):
+        root.quit()
     # Sprawdzenie istnienia folderu docelowego jak cos to tworzy folder
     if not os.path.exists(folder_deocelowy):
         os.makedirs(folder_deocelowy)
@@ -28,7 +31,7 @@ def move_unique_files(folder_zrodlowy, folder_deocelowy):
         source_path = os.path.join(folder_zrodlowy, pojedynczy_plik)
         destination_path = os.path.join(folder_deocelowy, pojedynczy_plik)
         shutil.move(source_path, destination_path)
-        print(f"Przeniesiono plik: {pojedynczy_plik}")
+        #print(f"Przeniesiono plik: {pojedynczy_plik}")
 
 
 
@@ -42,7 +45,6 @@ zipcode_btn = Button(root, text="Sortuj")
 # Position
 folder_zrodlowy_label.grid(row=0, column=0)
 folder_zrodlowy_entry.grid(row=0, column=1)
-
 folder_docelowy_label.grid(row=1, column=0)
 folder_docelowy_entry.grid(row=1, column=1)
 zipcode_btn.grid(row=2, columnspan=2)
