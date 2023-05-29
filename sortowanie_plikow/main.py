@@ -7,9 +7,10 @@ root.title("Puki Majster")
 
 def move_unique_files(folder_zrodlowy, folder_deocelowy):
     # Sprawdzenie istnienia folderu żródłowego jeśli nie istnieje program sie kończy
+    if len(folder_zrodlowy)==0 or len(folder_deocelowy)==0:
+        root.quit()
     if not os.path.exists(folder_zrodlowy):
         root.quit()
-    # Sprawdzenie istnienia folderu docelowego jak cos to tworzy folder
     if not os.path.exists(folder_deocelowy):
         os.makedirs(folder_deocelowy)
     # Przechowywanie nazw plików
@@ -32,7 +33,7 @@ def move_unique_files(folder_zrodlowy, folder_deocelowy):
         destination_path = os.path.join(folder_deocelowy, pojedynczy_plik)
         shutil.move(source_path, destination_path)
         #print(f"Przeniesiono plik: {pojedynczy_plik}")
-
+    root.quit()
 
 
 
@@ -41,12 +42,12 @@ folder_zrodlowy_label = Label(root, text="Podaj ścieżkę do folderu zródłowe
 folder_docelowy_label = Label(root, text="Podaj ścieżkę do folderu docelowego")
 folder_zrodlowy_entry = Entry(root)
 folder_docelowy_entry = Entry(root)
-zipcode_btn = Button(root, text="Sortuj")
+sort_btn = Button(root, text="Sortuj", command=lambda: move_unique_files(folder_zrodlowy_entry.get(),folder_docelowy_entry.get()))
 # Position
 folder_zrodlowy_label.grid(row=0, column=0)
 folder_zrodlowy_entry.grid(row=0, column=1)
 folder_docelowy_label.grid(row=1, column=0)
 folder_docelowy_entry.grid(row=1, column=1)
-zipcode_btn.grid(row=2, columnspan=2)
+sort_btn.grid(row=2, columnspan=2)
 if __name__ == '__main__':
     root.mainloop()
