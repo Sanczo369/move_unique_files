@@ -3,6 +3,8 @@ from tkinter import *
 root = Tk()
 root.title("Lista Plików")
 def file_list(folder,name):
+    if not os.path.exists(folder):
+        root.quit()
     if len(folder)==0 or len(name)==0:
         name="lista"
         folder="C:\\"
